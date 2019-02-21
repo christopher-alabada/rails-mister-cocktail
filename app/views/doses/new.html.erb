@@ -1,0 +1,10 @@
+<h1>New Cocktail</h1>
+<p>Find me in app/views/cocktails/new.html.erb</p>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= simple_fields_for @ingredient do |i| %>
+    <%= i.input :name %>
+  <% end %>
+    <%= f.input :description %>
+    <%= f.submit %>
+<% end %>

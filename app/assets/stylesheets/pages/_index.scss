@@ -1,2 +1,28 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.card-container {
+  width: 300px;
+}
+
+.card {
+  height: 200px;
+}
+
+.card-category {
+  h4 {
+    color: white;
+  }
+}
+
+.card-body {
+  border: 1px solid #ccc;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}

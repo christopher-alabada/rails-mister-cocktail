@@ -1,0 +1,27 @@
+<h1>Cocktails#show</h1>
+
+<!-- Cocktails details: name, ingredients, doses -->
+<img src="<%= @cocktail.image_url %>" style="width: 300px">
+<h3><%= @cocktail.name %></h3>
+
+<h5>Ingredients</h5>
+<ul>
+<% @cocktail.doses.each do |item| %>
+  <li><%= item.description %> <%= item.ingredient.name %> <%= link_to "Delete", dose_path(item), method: 'delete' %></li>
+<% end %>
+</ul>
+
+<div style="width: 400px;">
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+
+  <%= simple_fields_for @ingredient do |i| %>
+    <%= i.input :name, label: 'Ingredient', collection: Ingredient::NAMES %>
+  <% end %>
+
+  <%= f.input :description, label: 'Dose' %>
+
+  <%= f.submit %>
+<% end %>
+</div>
+
+<%# = link_to "Add Ingredient", new_cocktail_dose_path(@cocktail) %>

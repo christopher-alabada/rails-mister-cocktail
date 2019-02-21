@@ -1,0 +1,39 @@
+<h1>Cocktails#index</h1>
+<p>Find me in app/views/cocktails/index.html.erb</p>
+
+
+
+
+<div class="container">
+  <div class="row">
+<% @cocktails.each do |cocktail| %>
+  <div class="col-xs-12 col-sm-4">
+  <div class="card-container">
+    <a class="card-link" href="#" ></a>
+    <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cocktail.image_url %>');background-size: cover;">
+      <div class="card-category"><h4><%= cocktail.name %></h4></div>
+    </div>
+    <div class="card-body">
+      <% if cocktail.description %>
+        <p class="card-text"><%= cocktail.description %></p>
+      <% end %>
+      <% if cocktail.doses %>
+        <ul>
+        <% cocktail.doses.each do |dose| %>
+          <li><%= dose.description %> <%= dose.ingredient.name %></li>
+        <% end %>
+        </ul>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+<% end %>
+</div>
+</div>
+
+
+
+
+<%= link_to "New Cocktail", new_cocktail_path %>
