@@ -1,8 +1,29 @@
 // Import page-specific CSS files here.
 @import "home";
 
+$deco_gold: #b69356;
+$deco_blue: #469AE0;
+
+body {
+  background-color: rgb(19, 23, 39);
+}
+
+h1 {
+  font-size: 88px;
+  margin: 50px 0px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poiret One', cursive;
+  color: $deco_gold;
+}
+
 .card-container {
+  position: relative;
   width: 300px;
+  height: 280px;
+  border: 1px solid $deco_gold;
+  margin-bottom: 60px;
 }
 
 .card {
@@ -11,12 +32,19 @@
 
 .card-category {
   h4 {
-    color: white;
+    margin-top: 0px;
+    color: #f9f9f9;
+    padding-left: 10px;
+    padding-top: 6px;
   }
 }
 
 .card-body {
+  font-family: 'Didact Gothic', sans-serif;
+  color: #646363;
   border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  height: 80px;
 }
 
 .card-link {
@@ -25,4 +53,57 @@
   left: 0;
   height: 100%;
   width: 100%;
+}
+
+.index-doses {
+  list-style-type: none;
+  font-size: 14px;
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+
+  li {
+    margin-bottom: 2px;
+  }
+}
+
+.middot {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+i {
+  font-size: 14px;
+  margin-right: 3px;
+}
+
+.stars {
+  position: absolute;
+  right: 7px;
+  bottom: 50px;
+}
+
+.star {
+  color: $deco_blue;
+}
+
+.unstar {
+  color: #ccc;
+}
+
+.create-cocktail {
+  position: absolute;
+  width: 500px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 600ms, visibility 600ms;
+}
+
+.new-cocktail-button {
+  color: $deco_blue;
+  cursor: pointer;
+}
+
+.new-cocktail-button:hover {
+  text-decoration: underline;
 }

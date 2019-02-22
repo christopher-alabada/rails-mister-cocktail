@@ -9,3 +9,9 @@
 
 import 'bootstrap';
 console.log('Hello World from Webpacker')
+
+document.querySelector('.new-cocktail-button').addEventListener('click', (event) => {
+  const newCocktailForm = document.querySelector('.create-cocktail');
+  newCocktailForm.style.visibility = 'visible';
+  newCocktailForm.style.opacity = 1;
+});
