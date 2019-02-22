@@ -1,27 +1,33 @@
-<h1><%= @cocktail.name %></h1>
+<div class="show-container">
+  <h1><%= @cocktail.name %></h1>
 
-<%= cl_image_tag @cocktail.photo, width: 300 %>
+  <div><%= link_to "Back to Cocktails", cocktails_path %></div>
 
-<h5>Ingredients</h5>
-<ul>
-<% @cocktail.doses.each do |item| %>
-  <li><%= item.description %> <%= item.ingredient.name %> <%= link_to "Delete", dose_path(item), method: 'delete' %></li>
-<% end %>
-</ul>
-
-<div style="width: 400px;">
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-
-  <%= f.association :ingredient, collection: Ingredient.order(name: :asc), prompt: "Choose an Ingredient" %>
-
-  <%#= simple_fields_for @ingredient do |i| %>
-    <%#= i.input :name, label: 'Ingredient', collection: Ingredient::NAMES %>
-  <%# end %>
-
-  <%= f.input :description, label: 'Dose', class: 'form-control-sm' %>
-
-  <%= f.submit %>
-<% end %>
+  <%
+    if @cocktail.photo.url
+      photo = cl_image_path @cocktail.photo, width: 400, crop: :fill
+    end
+  %>
+  <div class="cocktail-container">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= photo %>');background-size: cover;">
+      <div class="card-category"><h4><%= @cocktail.name %></h4></div>
+    </div>
+    <div class="card-body cocktail-card-body">
+      <% if @cocktail.doses %>
+        <ul class="index-doses">
+        <% @cocktail.doses.first(3).each do |dose| %>
+          <li><%= dose.ingredient.name %><span class="middot">&middot;</span><%= dose.description %> <span style="float: right"><%= link_to "Delete", dose_path(dose), method: 'delete' %></span></li>
+        <% end %>
+        </ul>
+      <% end %>
+      <div class="ingredients-form">
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.association :ingredient, collection: Ingredient.order(name: :asc), prompt: "Choose an Ingredient" %>
+        <%= f.input :description, label: 'Dose', class: 'form-control-sm' %>
+        <%= f.submit %>
+      <% end %>
+      </div>
+      <div class="stars"><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt unstar"></i><i class="fas fa-glass-martini-alt unstar"></i></div>
+    </div>
+  </div>
 </div>
-
-<%# = link_to "Add Ingredient", new_cocktail_dose_path(@cocktail) %>
