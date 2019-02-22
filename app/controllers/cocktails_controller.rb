@@ -4,11 +4,16 @@ class CocktailsController < ApplicationController
   def index
     @cocktails = Cocktail.all
     @cocktail = Cocktail.new
+
+    # total_stars = @cocktail.reviews.map { |s| s.stars.nil? ? 0 : s.stars }
+    # @average_stars = total_stars.inject { |sum, el| sum + el } / total_stars.count
+    # raise
   end
 
   def show
     @dose = Dose.new
     @ingredient = Ingredient.new
+    @review = Review.new
     # raise
   end
 

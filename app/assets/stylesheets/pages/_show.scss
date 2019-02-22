@@ -2,10 +2,18 @@
   margin: 0px 120px;
 }
 
+.cocktail-flex-box {
+  display: flex;
+}
+
 .cocktail-container {
   border: 1px solid $deco_gold;
   width: 600px;
-  margin: 0px, auto;
+  // margin: 0px, auto;
+}
+
+.cocktail-container:last-child {
+  margin-left: 40px;
 }
 
 .cocktail-card-body {
@@ -21,4 +29,26 @@
 
 .ingredients-form {
   margin-bottom: 20px;
+}
+
+.reviews-container {
+  background-color: #f9f9f9;
+  font-family: 'Didact Gothic', sans-serif;
+  color: #646363;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.review-section {
+  padding-bottom: 20px;
+}
+
+.review-name {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.review-stars {
+  float: right;
+  vertical-align: text-bottom;
 }

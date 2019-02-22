@@ -9,6 +9,20 @@
       end
     %>
 
+    <%
+      stars_array = cocktail.reviews.map { |s| s.stars.nil? ? 0 : s.stars }
+      if stars_array.count > 0
+        total_stars = stars_array.inject { |sum, el| sum + el }
+        if total_stars > 0
+          average_stars = (total_stars / stars_array.count).round
+        else
+          average_stars = 1
+        end
+      else
+        average_stars = 1
+      end
+    %>
+
     <div class="col-xs-12 col-sm-4">
     <div class="card-container">
       <a class="card-link" href="#" ></a>
@@ -24,7 +38,16 @@
           <% end %>
           </ul>
         <% end %>
-        <div class="stars"><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt unstar"></i><i class="fas fa-glass-martini-alt unstar"></i></div>
+        <div class="stars">
+          <% 5.times.each do |count| %>
+            <% if average_stars > count %>
+              <i class="fas fa-glass-martini-alt star"></i>
+            <% else %>
+              <i class="fas fa-glass-martini-alt unstar"></i>
+            <% end %>
+          <% end %>
+        </div>
+              <!-- <i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt star"></i><i class="fas fa-glass-martini-alt unstar"></i><i class="fas fa-glass-martini-alt unstar"></i></div> -->
       </div>
     </div>
   </div>
