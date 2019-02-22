@@ -3,11 +3,17 @@
   <div class="row">
 
   <% @cocktails.each do |cocktail| %>
+    <%
+      if cocktail.photo.url
+        photo = cl_image_path cocktail.photo, width: 400, crop: :fill
+      end
+    %>
+
     <div class="col-xs-12 col-sm-4">
     <div class="card-container">
       <a class="card-link" href="#" ></a>
       <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cocktail.image_url %>');background-size: cover;">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= photo %>');background-size: cover;">
         <div class="card-category"><h4><%= cocktail.name %></h4></div>
       </div>
       <div class="card-body">
@@ -29,7 +35,8 @@
 <div class="create-cocktail">
   <%= simple_form_for @cocktail do |f| %>
     <%= f.input :name, style: "height: 5px;" %>
-    <%= f.input :image_url %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.submit %>
   <% end %>
 </div>
