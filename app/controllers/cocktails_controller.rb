@@ -22,7 +22,7 @@ class CocktailsController < ApplicationController
       # Redirect to new doses
       redirect_to cocktail_path(@cocktail)
     else
-      render :new
+      render :index
     end
   end
 

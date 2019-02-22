@@ -19,4 +19,20 @@ ingredients.each do |ingredient|
   puts "Created #{ingredient['strIngredient1']}"
 end
 
+# Add club soda
+Ingredient.create(name: 'Club soda')
+puts "Created Club soda"
+
+# Add Ginger syrup
+Ingredient.create(name: 'Ginger syrup')
+puts "Created Ginger syrup"
+
+# Add Angostura bitters
+Ingredient.create(name: 'Angostura bitters')
+puts "Created Angostura bitters"
+
+# Add Tonic
+Ingredient.create(name: 'Tonic')
+puts "Created Tonic"
+
 puts "Done"
