@@ -16,7 +16,7 @@
       <div class="card-body cocktail-card-body">
         <% if @cocktail.doses %>
           <ul class="index-doses">
-          <% @cocktail.doses.first(3).each do |dose| %>
+          <% @cocktail.doses.each do |dose| %>
             <li><%= dose.ingredient.name %><span class="middot">&middot;</span><%= dose.description %> <span style="float: right"><%= link_to "Delete", dose_path(dose), method: 'delete' %></span></li>
           <% end %>
           </ul>
